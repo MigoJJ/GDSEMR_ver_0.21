@@ -1,14 +1,36 @@
 package com.emr.gds.main;
 
+import java.awt.BorderLayout;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
+import javax.swing.SwingUtilities;
+
 import com.emr.gds.input.IAIFxTextAreaManager;
 import com.emr.gds.input.IAIMain;
-import com.emr.gds.input.IAITextAreaManager;
 import com.emr.gds.soap.ChiefComplaintEditor;
 import com.emr.gds.soap.EMRPMH;
 import com.emr.gds.soap.IMSPresentIllness;
 import com.emr.gds.soap.IMSFollowUp.PlanFollowupAction;
+
 import javafx.application.Platform;
+import javafx.embed.swing.JFXPanel;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Dialog;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextFormatter;
 import javafx.scene.input.KeyCode;
@@ -18,11 +40,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import com.emr.gds.soap.EMRPMH;
+
 
 /**
  * Manages the central text areas in the EMR application, providing features like:
@@ -261,9 +280,10 @@ public class IAMTextArea {
 
     private void executePastMedicalHistoryHandler(TextArea textArea, int index) {
         try {
-            new EMRPMH(IAIMain.getTextAreaManager()).setVisible(true);
+            // Keep this call: EMRPMH(textArea)
+            new EMRPMH(textArea).showAndWait(); 
         } catch (Exception e) {
-            handleEditorException("Past Medical History", textArea, index, e);
+            handleEditorException("Past Medical History (PMH)", textArea, index, e);
         }
     }
 
