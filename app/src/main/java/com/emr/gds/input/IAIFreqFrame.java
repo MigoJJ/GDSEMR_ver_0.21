@@ -1,6 +1,6 @@
 package com.emr.gds.input;
 
-import javafx.application.Platform;
+import javafx.application.Platform;	
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
@@ -55,7 +55,7 @@ public class IAIFreqFrame extends Stage {
         );
         root.setCenter(content);
 
-        setScene(new Scene(root, 360, 760));
+        setScene(new Scene(root, 360, 800));
         setOnShown(e -> positionInTopRight());
 
         initializeVitalsValidInputs();

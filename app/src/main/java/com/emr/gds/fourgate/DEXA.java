@@ -35,7 +35,7 @@ public class DEXA extends Application {
         primaryStage.setTitle("Osteoporosis Risk Assessment (DEXA)");
 
         initComponents();
-        Scene scene = new Scene(createLayout(), 800, 600);
+        Scene scene = new Scene(createLayout(), 600, 600);
         primaryStage.setScene(scene);
         primaryStage.show();
         scoreField.requestFocus();
@@ -102,14 +102,23 @@ public class DEXA extends Application {
                 "* Vitamin D (25-OH)\n" +
                 "* Kidney Function (eGFR, Cr)\n" +
                 "* Bone Turnover Markers (CTX/NTX, BSAP)");
+
         zScoreInfo.setEditable(false);
         zScoreInfo.setWrapText(true);
         zScoreInfo.setStyle("-fx-control-inner-background: #E8E8FF;");
+        
+        // Set the preferred height of the TextArea to 290 pixels
+        zScoreInfo.setPrefHeight(290);
 
         VBox panel = new VBox(zScoreInfo);
         panel.setPadding(new Insets(10));
         panel.setBorder(new Border(new BorderStroke(Color.LIGHTGRAY, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
         panel.setPrefWidth(300);
+        
+        // Note: If you want the VBox to strictly contain *only* this height plus padding (10 top, 10 bottom), 
+        // you might want to set the VBox height as well:
+        // panel.setPrefHeight(290 + 20); // 290 (TextArea) + 20 (VBox padding)
+
         return panel;
     }
 

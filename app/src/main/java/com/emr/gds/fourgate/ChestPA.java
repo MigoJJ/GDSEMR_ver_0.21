@@ -61,8 +61,8 @@ public class ChestPA extends Stage {
     private void setupStage() {
         setTitle("Chest PA Systematic Review");
         setScene(createScene());
-        setWidth(1300);
-        setHeight(850);
+        setWidth(1000);
+        setHeight(980);
         setMinWidth(1000);
         setMinHeight(900);
     }
